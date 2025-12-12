@@ -1,11 +1,35 @@
 # textbooks-too-pricey
 
-This repo is created for running searches within EBSCO Discovery Service (EDS) API and returning results as additional columns appended on a CSV. It was created to search by ISBN for each row of a CSV, returning the top 5 results and omiting Book Reviews and Journal Articles. The query is easily modified.
+This repo processes bookstore export data (CSV) and enriches it with metadata from Primo and Alma APIs. For each row in the input file (identified by ISBN), the script performs a search and appends up to 5 enriched results with relevant details (title, format, license terms, permalink, etc.).
 
-## Our use case
-To support textbook affordability, our library created a Course Books in the Library page. Our library wanted to use an export of bookstore system data and search by ISBNs for each row. EDS could support bulk searching in its out-of-the-box user interface, but for our purposes, we needed results to be associated with each row of the CSV.
+It was created to support textbook affordability by identifying which course books are already available to students in library-licensed eBook or print formats.
 
-## Dependencies
-- Python3
-- pandas
+---
+
+## Use Case
+
+To promote textbook affordability, our library maintains a **Course Books in the Library** page. Using bookstore system data (exported as a CSV), this tool:
+
+- Searches each ISBN against the **Primo API**
+- Enriches results with **Alma portfolio metadata**
+- Appends up to 5 results per ISBN to the output CSV
+- Retains all original course-level fields and **price information** (new, used, rental, digital)
+- Flags license terms (e.g., number of concurrent users)
+- Includes permalink and location info
+
+This allows us to assess which assigned course books are already licensed by the library and to deduplicate titles across sections.
+
+---
+
+## 🔧 Dependencies
+
+- Python 3.8+
+- `pandas`
+- `requests`
+
+Install via pip:
+
+```bash
+pip install pandas requests
+
 

@@ -3,11 +3,20 @@ __pycache__/
 *.py[cod]
 .DS_Store
 
-#EBSCO credentials
+# EBSCO credentials
 credentials.py
 
-#Data and output files
+# Data and output files
 sample_data.csv
 
 output/*
 !output/sample_output.csv
+
+# Additional generated CSV files
+*.csv
+
+# Generated JSON files
+*.json
+
+# Generated data directory
+data/
